@@ -1,14 +1,14 @@
-# Breaking down monoliths 🪨⛏️
-
+# <p align = "center"> Breaking down monoliths 🪨⛏️ </p>
+# <p align = "center"> Problem Statement: </p>
 This problem statement has two objectives:
 - Get familiar with reading error stack trace and debugging code.
 - Convert a monolith architecture based docker-compose application into a microservices based architecture.  
 
-## Requirements:
+### Requirements:
 - [docker](https://docs.docker.com/engine/) and [docker-compose](https://docs.docker.com/compose/install/). Follow the guides based on your operating system.
 - Internet. Pull docker image `python:3.8-alpine` beforehand to avoid connectivity issues.
 
-## Initial directory structure
+### Initial directory structure
 ```
 ├── README.md
 ├── docs
@@ -24,12 +24,12 @@ This problem statement has two objectives:
 │   │   └── Dockerfile
 │   │
 ```
-## Monolith architecture diagram
+### Monolith architecture diagram
 <p align="center">
   <img src="docs/microservices-initial.drawio.png" />
 </p>
 
-## Build & Run
+### Build & Run
 ```
 # under the microservices directory
 # NOTE: For any code changes to be reflected, the build command must be rerun, and then up
@@ -44,8 +44,8 @@ docker-compose down
 
 **NOTE**: It is possible your first build will not be successful and that's alright. Read the stack trace and debug the errors. The resources and links provided within the manual are sufficient to successfully complete the project.
 
-## Tasks
-0. ### Task-0 - Completing the code 👨‍💻👩‍💻
+### Tasks
+0. #### Task-0 - Completing the code 👨‍💻👩‍💻
     #### 0.0. Add modules to ```landing/app/requirements.txt```
       - The following modules are required by the ```landing-service```:
       - ```flask```
@@ -67,7 +67,7 @@ docker-compose down
             ```
           - Copy the contents of the ```./app``` to ```/app``` folder
           - Run the command ```python app.py```
-1. ### Task-1 - Debugging 🐛🔨
+1. #### Task-1 - Debugging 🐛🔨
     #### 1.0. Fix the variable type of the incoming values from index.html
       - By default, Python considers all input as string. Due to this, the arithmetic operations do not seem to be working as intended. 
       - Fix the type of the two variable values received from ```index.html```
@@ -76,7 +76,7 @@ docker-compose down
       - By default, no values are provided by ```index.html```, causing the application to throw exceptions and crash when localhost:5050 is loaded initially.
       - Avoid the crash by handling the exceptions raised in the landing-service app.
 
-2. ### Task-2 - Breaking the monolith architecture 🪨⛏️
+2. #### Task-2 - Breaking the monolith architecture 🪨⛏️
     #### 2.0. Decouple the arithmetic functions from landing-service.
       - The four arithmetic functions currently reside under landing-service. However, if landing-service were to become unavailable for whatever reason, the four functions would be unavailable as well.
       - Create separate flask applications, Addition, Subtraction, Multiplication and Division. Each application will consist of a class which inherits the ```Resource``` class of ```flask_restful``` module. 
@@ -96,7 +96,7 @@ docker-compose down
       - ```equal```: return ```True``` if the first value is equal to the second else ```False```
 
 
-## Microservices-based architecture diagram
+### Microservices-based architecture diagram
 <p align="center">
   <img src="docs/microservices-final.drawio.png" />
   
@@ -105,7 +105,7 @@ docker-compose down
 </p>
 
 
-## Miscellaneous
+### Miscellaneous
 - Directory structure of additional arithmetic microservices you will be adding:
 ```
 ├── <name of the service>
@@ -116,5 +116,21 @@ docker-compose down
 │   │  
 ```
 
+# <p align = "center"> Working and Explanation </p>
 
+The [Docker-compose.yaml](https://github.com/Omicron02/BreakingDownMonoliths/blob/master/microservices/Docker-compose.yaml) contains all the services along with their respective ports and folder locations. 
+Each of these locations contain a dockerfile, a requirements.txt and app.py. Each dockerfile uses requirements.txt to install the necessary modules to run app.py. 
 
+On running the command ``` docker-compose up ``` in the microservices folder, it builds and runs each service. 
+If everything is successful, the program can be accessed by heading over to [localhost:5050](127.0.0.1:5050).
+
+#### Additional info:
+* The landing folder contains index.html that determines the layout of the page.
+* The landing folder's app.py sends GET requests to other services based on the operation performed.
+
+# <p align = "center"> Credits </p>
+
+* ### [Mihir Jayaprakash](https://github.com/mihirjayaprakash)
+* ### [Nithanth Sawkar](https://github.com/NithanthSawkar)
+* ### [Pranav Tejas K](https://github.com/PranavTK12)
+* ### [Rahul Samal](https://github.com/Omicron02)
