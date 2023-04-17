@@ -122,7 +122,7 @@ The [Docker-compose.yaml](https://github.com/Omicron02/BreakingDownMonoliths/blo
 Each of these locations contain a dockerfile, a requirements.txt and app.py. Each dockerfile uses requirements.txt to install the necessary modules to run app.py. 
 
 On running the command ``` docker-compose up ``` in the microservices folder, it builds and runs each service. 
-If everything is successful, the program can be accessed by heading over to [localhost:5050](127.0.0.1:5050).
+If everything is successful, the program can be accessed by heading over to [localhost:5050](http://127.0.0.1:5050).
 
 #### Additional info:
 * The landing folder contains index.html that determines the layout of the page.
