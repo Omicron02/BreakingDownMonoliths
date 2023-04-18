@@ -5,7 +5,7 @@ services:
     build: ./landing 
     hostname: landing-service
     ports:
-      - 5050:5050 
+      - 5050:5050
     networks:
       sample:
         aliases:
