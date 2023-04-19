@@ -81,6 +81,8 @@ docker-compose down
       - The four arithmetic functions currently reside under landing-service. However, if landing-service were to become unavailable for whatever reason, the four functions would be unavailable as well.
       - Create separate flask applications, Addition, Subtraction, Multiplication and Division. Each application will consist of a class which inherits the ```Resource``` class of ```flask_restful``` module. 
       - Define a GET method within the class with necessary parameters. An example of this class with the method defined can be found [here](https://stackoverflow.com/questions/25098661/flask-restful-add-resource-parameters) and [here](https://lovelace.oulu.fi/ohjelmoitava-web/programmable-web-project-spring-2019/implementing-rest-apis-with-flask/)
+
+      
       - Use the ```add_resource``` function to add the class as a resource and define the API endpoint. Make sure to also mention the type of the parameters in the endpoint. 
        Example: ```api.add_resource(<class-name>, '/<int:argument0>/<int:argument1>')```
       - Update the ```Docker-compose.yaml``` to recognize the newly added flask applications as separate services. **The ```Docker-compose.yaml``` lets you define the port number and network alias that will be used by ```landing-service``` to communicate within the entire architecture**
